@@ -17,6 +17,7 @@ class _LoginScreenState extends State<SigUpPage> {
   final TextEditingController useraddressController = TextEditingController();
   final TextEditingController userageController = TextEditingController();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +31,11 @@ class _LoginScreenState extends State<SigUpPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    height: MediaQuery.sizeOf(context).height * 0.42,
+                    height: MediaQuery.sizeOf(context).height * 0.31,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/images/travel.jpg'),
+                        fit: BoxFit.cover
                       ),
                     )),
                 Container(
@@ -66,6 +68,7 @@ class _LoginScreenState extends State<SigUpPage> {
                         ),
                         const SizedBox(height: 12),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please Enter Your Full Name ';
@@ -75,6 +78,7 @@ class _LoginScreenState extends State<SigUpPage> {
                           },
                           controller: usernameController,
                           decoration: InputDecoration(
+                             
                             hintText: 'Enter your full name',
                             hintStyle: const TextStyle(
                                 fontSize: 12,
@@ -145,10 +149,11 @@ class _LoginScreenState extends State<SigUpPage> {
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 12.0),
                           ),
-                          obscureText: true,
+                          
                         ),
                         const SizedBox(height: 12),
                         TextFormField(
+                          style: const TextStyle(color: Colors.white),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please Enter A Password ';
@@ -158,7 +163,9 @@ class _LoginScreenState extends State<SigUpPage> {
                             } else {
                               return null;
                             }
+                            
                           },
+                          
                           controller: passwordController,
                           decoration: InputDecoration(
                             hintText: 'Enter your Password',
@@ -174,6 +181,7 @@ class _LoginScreenState extends State<SigUpPage> {
                               borderRadius: BorderRadius.circular(
                                   12.0), // Same radius for focused state
                               borderSide: const BorderSide(
+                                
                                   color:
                                       Colors.white), // Change color if needed
                             ),
@@ -187,10 +195,12 @@ class _LoginScreenState extends State<SigUpPage> {
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10.0, horizontal: 12.0),
                           ),
+                          obscureText: true,
                         ),
                         const SizedBox(height: 12),
                         TextFormField(
-                           validator: (value) {
+                          style: const TextStyle(color: Colors.white),
+                          validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please Enter Your Address  ';
                             } else {
@@ -228,7 +238,8 @@ class _LoginScreenState extends State<SigUpPage> {
                         ),
                         const SizedBox(height: 12),
                         TextFormField(
-                           validator: (value) {
+                          style: const TextStyle(color: Colors.white),
+                          validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please Enter Your Age ';
                             } else {
@@ -265,21 +276,39 @@ class _LoginScreenState extends State<SigUpPage> {
                           ),
                         ),
                         const SizedBox(height: 12),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          width: double.infinity,
-                          height: 50,
-                          child: const Center(
-                              child: Text(
-                            'Sign up',
-                            style: TextStyle(
-                              color: primary,
-                              fontWeight: FontWeight.w700,
+                        InkWell(
+                          onTap: () {
+                            if (formkey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    "Sign Up Successfully",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 115, 255, 1),
+                                ),
+                              );
+                            } else {
+                              return null;
+                            }
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
-                          )),
+                            width: double.infinity,
+                            height: 50,
+                            child: const Center(
+                                child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                color: primary,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            )),
+                          ),
                         ),
                         const SizedBox(
                           height: 12,
