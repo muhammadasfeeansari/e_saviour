@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.SignupRoute,
+      initialRoute: "/login",
       routes: {
         MyRoutes.HomeRoute: (context) => const HomePage(),
-        MyRoutes.LoginRoute: (context) => const SignPage(),
-        MyRoutes.SignupRoute: (context) => const LoginPage(),
+        MyRoutes.SignupRoute: (context) => const SigUpPage(),
+        MyRoutes.LoginRoute: (context) => const LoginPage(),
       },
     );
   }
