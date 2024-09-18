@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sviour_app/utils/routes.dart';
 
 class SigUpPage extends StatefulWidget {
   const SigUpPage({super.key});
@@ -229,7 +230,9 @@ class _LoginScreenState extends State<SigUpPage> {
                         children: [
                           const Text("Already Have`n Account?"),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushNamed(context, MyRoutes.LoginRoute);
+                            },
                             child: const Text(
                               " Sign In",
                               style: TextStyle(color: Colors.white),
