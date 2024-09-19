@@ -15,9 +15,34 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/signup",
+      theme: ThemeData(
+        primaryColor: Colors.teal,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.teal,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.tealAccent, // Button color
+          ),
+        ),
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15), // Rounded corners
+          ),
+          elevation: 4, // Shadow for depth
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ), // <--- Closing the textTheme block with a comma
+      ),
+      initialRoute: "/signup", // <--- Added comma here
       routes: {
-        MyRoutes.HomeRoute: (context) => const HomePage(),
+        MyRoutes.HomeRoute: (context) => HomePage(),
         MyRoutes.SignupRoute: (context) => const SigUpPage(),
         MyRoutes.LoginRoute: (context) => const LoginPage(),
       },

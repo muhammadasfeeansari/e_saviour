@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sviour_app/utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -120,21 +121,26 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: true,
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        width: double.infinity,
-                        height: 50,
-                        child: const Center(
-                            child: Text(
-                          'Login',
-                          style: TextStyle(
-                            color: primary,
-                            fontWeight: FontWeight.w700,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, MyRoutes.HomeRoute);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15.0),
                           ),
-                        )),
+                          width: double.infinity,
+                          height: 50,
+                          child: const Center(
+                              child: Text(
+                            'Login',
+                            style: TextStyle(
+                              color: primary,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          )),
+                        ),
                       ),
                     ],
                   ),
