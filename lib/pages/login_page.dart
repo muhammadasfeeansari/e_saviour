@@ -16,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -23,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
+                
                   height: 250,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
