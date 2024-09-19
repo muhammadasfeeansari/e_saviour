@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sviour_app/pages/home_page.dart';
+import 'package:sviour_app/pages/Dashboard.dart';
 import 'package:sviour_app/pages/login_page.dart';
 import 'package:sviour_app/pages/signup.dart';
 import 'package:sviour_app/utils/routes.dart';

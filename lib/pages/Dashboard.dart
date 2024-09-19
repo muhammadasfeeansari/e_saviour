@@ -8,10 +8,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary,
-        title: const Text('Dashboard'),
+        title: const Text('Dashboard',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             icon: const Icon(Icons.account_circle),
+            color: Colors.white,
             onPressed: () {
               // Navigate to profile or settings
             },
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: Drawer(
+        
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -173,7 +175,7 @@ class CardVacation extends StatelessWidget {
       ),
       color: Color(0xFF326BFB),
       child: Container(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(13.0),
         child: Row(
           children: [
             Expanded(
@@ -206,6 +208,7 @@ class CardVacation extends StatelessWidget {
                   ),
                   SizedBox(height: 16.0),
                   Row(
+                    
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
