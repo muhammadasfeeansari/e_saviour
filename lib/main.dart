@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sviour_app/pages/Dashboard.dart';
+import 'package:sviour_app/pages/Trips.dart';
 import 'package:sviour_app/pages/login_page.dart';
 import 'package:sviour_app/pages/signup.dart';
 import 'package:sviour_app/utils/routes.dart';
+import 'package:sviour_app/widgets/Drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.teal,
+
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.teal,
         ),
@@ -40,11 +43,13 @@ class MyApp extends StatelessWidget {
           ),
         ), // <--- Closing the textTheme block with a comma
       ),
-      initialRoute: "/signup", // <--- Added comma here
+      initialRoute: "/home", // <--- Added comma here
       routes: {
-        MyRoutes.HomeRoute: (context) => HomePage(),
+        MyRoutes.HomeRoute: (context) => DashboardPage(),
         MyRoutes.SignupRoute: (context) => const SigUpPage(),
         MyRoutes.LoginRoute: (context) => const LoginPage(),
+        MyRoutes.HomeRoute: (context) => HomePage(),
+        MyRoutes.DrawerRoute: (context) => Travel_Drawer(),
       },
     );
   }

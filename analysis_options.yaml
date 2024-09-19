@@ -9,6 +9,13 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  errors:
+    unnecessary_import: ignore
+    # dead_code: ignore
+    unused_local_variable: ignore
+    prefer_const_constructors: ignore
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`

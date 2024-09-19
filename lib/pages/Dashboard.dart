@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+
+class DashboardPage extends StatelessWidget {
   static const Color primary = Color(0xFF326BFB);
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary,
-        title: const Text('Dashboard',style: TextStyle(color: Colors.white),),
+        title: const Text(
+          'Dashboard',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.account_circle),
@@ -19,44 +23,13 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      drawer: Drawer(
-        
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: primary,
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.app_registration),
-              title: const Text('Registration'),
-              onTap: () {
-                // Handle Registration
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.login),
-              title: const Text('Login'),
-              onTap: () {
-                // Handle Login
-              },
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Header
             CustomHeader(),
             // Use VacationScreen without Scaffold
-            VacationScreen(), 
+            VacationScreen(),
           ],
         ),
       ),
@@ -64,10 +37,13 @@ class HomePage extends StatelessWidget {
   }
 }
 
+//
+
+
 // Custom header
 class CustomHeader extends StatelessWidget {
   static const Color primary = Color(0xFF326BFB);
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -208,7 +184,6 @@ class CardVacation extends StatelessWidget {
                   ),
                   SizedBox(height: 16.0),
                   Row(
-                    
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -268,4 +243,3 @@ class VacationScreen extends StatelessWidget {
     );
   }
 }
-
