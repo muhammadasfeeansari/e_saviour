@@ -1,12 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sviour_app/pages/Dashboard.dart';
+import 'package:sviour_app/pages/Home_Page.dart';
 import 'package:sviour_app/pages/Trips.dart';
 import 'package:sviour_app/pages/login_page.dart';
 import 'package:sviour_app/pages/signup.dart';
 import 'package:sviour_app/utils/routes.dart';
 import 'package:sviour_app/widgets/Drawer.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: "AIzaSyBVP9vysNs3xWkxPQnUUktNidh1KVVu43g",
+          appId: "1:959491819935:android:deb3034da74238ba5ed5aa",
+          messagingSenderId: "959491819935",
+          projectId: "travelapp-87f0e"));
   runApp(const MyApp());
 }
 
@@ -18,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        iconTheme: IconThemeData(color: Colors.white),
         primaryColor: Colors.teal,
 
         appBarTheme: const AppBarTheme(
@@ -41,14 +50,15 @@ class MyApp extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
-        ), // <--- Closing the textTheme block with a comma
+        ), 
       ),
-      initialRoute: "/home", // <--- Added comma here
+      initialRoute: "/signup", 
       routes: {
-        MyRoutes.HomeRoute: (context) => DashboardPage(),
+        // MyRoutes.AuthRoute: (context) => AuthPage(),
+        MyRoutes.HomeRoute: (context) => HomePage(),
         MyRoutes.SignupRoute: (context) => const SigUpPage(),
         MyRoutes.LoginRoute: (context) => const LoginPage(),
-        MyRoutes.HomeRoute: (context) => HomePage(),
+        MyRoutes.TripLocationRoute: (context) => tripsLocationPage(),
         MyRoutes.DrawerRoute: (context) => Travel_Drawer(),
       },
     );

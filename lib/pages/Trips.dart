@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sviour_app/widgets/Drawer.dart';
 
-class HomePage extends StatelessWidget {
+class tripsLocationPage extends StatelessWidget {
   static const Color primary = Color(0xFF326BFB);
   
   @override
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 26),
               child: const Text(
-                "Book The Best Trip\nWhere You Want To Go ",
+                "Book The Best Location\nWhere You Want To Go ",
                 style: TextStyle(
                   fontFamily: "cursive",
                   fontSize: 25,

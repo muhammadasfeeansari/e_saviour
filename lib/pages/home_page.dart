@@ -1,17 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sviour_app/utils/routes.dart';
+import 'package:sviour_app/widgets/Drawer.dart';
 
-
-class DashboardPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   static const Color primary = Color(0xFF326BFB);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: primary,
         title: const Text(
-          'Dashboard',
-          style: TextStyle(color: Colors.white),
+          'Trips',
+          style: TextStyle(color: Colors.white, fontSize: 30),
         ),
         actions: [
           IconButton(
@@ -19,6 +22,33 @@ class DashboardPage extends StatelessWidget {
             color: Colors.white,
             onPressed: () {
               // Navigate to profile or settings
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            color: Colors.white,
+            onPressed: () async {
+              // Show the loading indicator
+              showDialog(
+                context: context,
+                barrierDismissible:
+                    false, // Prevent dismissing by tapping outside
+                builder: (context) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              );
+
+              // Sign out the user
+              await FirebaseAuth.instance.signOut();
+
+              // Close the loading indicator dialog after a slight delay
+              Future.delayed(const Duration(seconds: 3), () {
+                Navigator.pop(context); // Remove the dialog
+                Navigator.pushReplacementNamed(
+                    context, MyRoutes.LoginRoute); // Navigate to login
+              });
             },
           ),
         ],
@@ -33,12 +63,10 @@ class DashboardPage extends StatelessWidget {
           ],
         ),
       ),
+      drawer: Travel_Drawer(),
     );
   }
 }
-
-//
-
 
 // Custom header
 class CustomHeader extends StatelessWidget {
