@@ -1,9 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sviour_app/pages/Expenses.dart';
 import 'package:sviour_app/pages/Home_Page.dart';
+import 'package:sviour_app/pages/Insights.dart';
 import 'package:sviour_app/pages/Trips.dart';
 import 'package:sviour_app/pages/login_page.dart';
+import 'package:sviour_app/pages/reports.dart';
 import 'package:sviour_app/pages/signup.dart';
+import 'package:sviour_app/pages/tripManagement.dart';
 import 'package:sviour_app/utils/routes.dart';
 import 'package:sviour_app/widgets/Drawer.dart';
 
@@ -60,6 +64,10 @@ class MyApp extends StatelessWidget {
         MyRoutes.LoginRoute: (context) => const LoginPage(),
         MyRoutes.TripLocationRoute: (context) => tripsLocationPage(),
         MyRoutes.DrawerRoute: (context) => Travel_Drawer(),
+        MyRoutes.tripMnagementRoute: (context) => TripManagementPage(),
+        MyRoutes.expensesRoute: (context) =>ExpensesPage (),
+        MyRoutes.insightRoute: (context) => InsightsPage(),
+        MyRoutes.ReportsRoute: (context) => ReportsPage(),
       },
     );
   }

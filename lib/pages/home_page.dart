@@ -31,8 +31,7 @@ class HomePage extends StatelessWidget {
               // Show the loading indicator
               showDialog(
                 context: context,
-                barrierDismissible:
-                    false, // Prevent dismissing by tapping outside
+                barrierDismissible: false, // Prevent dismissing by tapping outside
                 builder: (context) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -58,12 +57,86 @@ class HomePage extends StatelessWidget {
           children: [
             // Header
             CustomHeader(),
-            // Use VacationScreen without Scaffold
-            VacationScreen(),
+            const SizedBox(height: 20),
+            // Menu for different features
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: GridView.count(
+                shrinkWrap: true, // Important to allow GridView inside Column
+                crossAxisCount: 2, // Two items per row
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                physics: NeverScrollableScrollPhysics(), // Prevent internal scrolling
+                children: [
+                  _buildFeatureCard(
+                    context,
+                    'Trip\nManagement',
+                    Icons.map_outlined,
+                    Colors.orange,
+                    () {
+                      // Navigate to Trip Management Page
+                      Navigator.pushNamed(context, MyRoutes.tripMnagementRoute);
+                    },
+                  ),
+                  _buildFeatureCard(
+                    context,
+                    'Expenses',
+                    Icons.attach_money_outlined,
+                    Colors.green,
+                    () {
+                      // Navigate to Expenses Page
+                      Navigator.pushNamed(context, MyRoutes.expensesRoute);
+                    },
+                  ),
+                  _buildFeatureCard(
+                    context,
+                    'Insights',
+                    Icons.bar_chart_outlined,
+                    Colors.purple,
+                    () {
+                      // Navigate to Insights Page
+                      Navigator.pushNamed(context, MyRoutes.insightRoute);
+                    },
+                  ),
+                  _buildFeatureCard(
+                    context,
+                    'Reports',
+                    Icons.receipt_long_outlined,
+                    Colors.blue,
+                    () {
+                      // Navigate to Reports Page
+                      Navigator.pushNamed(context, MyRoutes.ReportsRoute);
+                    },
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
       drawer: Travel_Drawer(),
+    );
+  }
+
+  // Feature Card Builder
+  Widget _buildFeatureCard(BuildContext context, String title, IconData icon, Color color, Function onTap) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        elevation: 8,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 50, color: color),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -151,123 +224,6 @@ class CustomHeader extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class CardVacation extends StatelessWidget {
-  final String title;
-  final String destination;
-  final String budget;
-  final DateTime startDate;
-  final DateTime endDate;
-
-  const CardVacation({
-    Key? key,
-    required this.title,
-    required this.destination,
-    required this.budget,
-    required this.startDate,
-    required this.endDate,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-      color: Color(0xFF326BFB),
-      child: Container(
-        padding: EdgeInsets.all(13.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 8.0),
-                  Text(
-                    destination,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 4.0),
-                  Text(
-                    "Budget: $budget",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Start trip: ${_formatDate(startDate)}",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        "End trip: ${_formatDate(endDate)}",
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  String _formatDate(DateTime date) {
-    return "${date.month}/${date.day}/${date.year}";
-  }
-}
-
-class VacationScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CardVacation(
-          title: "Summer Vacation",
-          destination: "Maldives",
-          budget: "\$2000",
-          startDate: DateTime(2024, 6, 15),
-          endDate: DateTime(2024, 6, 22),
-        ),
-        CardVacation(
-          title: "Winter Vacation",
-          destination: "Switzerland",
-          budget: "\$3000",
-          startDate: DateTime(2024, 12, 10),
-          endDate: DateTime(2024, 12, 20),
-        ),
-      ],
     );
   }
 }
